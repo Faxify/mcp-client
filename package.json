@@ -1,0 +1,44 @@
+{
+  "name": "@faxify/mcp-client",
+  "version": "0.1.0",
+  "description": "MCP client wrapper for Faxify MCP server - bridges stdio (Cursor) to HTTP (Next.js)",
+  "type": "module",
+  "main": "index.mjs",
+  "bin": {
+    "faxify-mcp-client": "index.mjs"
+  },
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "prettier:check": "prettier --check .",
+    "prettier:fix": "prettier --write .",
+    "lint:format": "yarn lint:fix && yarn prettier:fix",
+    "pack:dry-run": "npm pack --dry-run"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "faxify",
+    "cursor",
+    "cli"
+  ],
+  "author": "Constagility/Faxify",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Faxify/mcp-client.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "index.mjs",
+    "README.md"
+  ],
+  "devDependencies": {
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.6.2"
+  }
+}

@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+yarn.lock
+package-lock.json
+
+# Development files
+*.log
+.DS_Store
+.git/
+.gitignore
+.env
+.env.local
+.env.*.local
+
+# Development tools/config
+eslint.config.js
+.prettierrc
+.eslintrc*
+.prettierrc.*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Documentation (README.md will be published via package.json "files" field)
+PUBLISH.md
+
+# Build outputs (if any)
+dist/
+build/
+*.tsbuildinfo
+
+# Test files
+test/
+tests/
+*.test.js
+*.test.mjs
+*.spec.js
+*.spec.mjs
+coverage/
+

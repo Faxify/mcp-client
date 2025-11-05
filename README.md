@@ -2,6 +2,8 @@
 
 MCP client wrapper for Faxify MCP server. Bridges stdio (Cursor, Claude Desktop, ChatGPT Desktop, and other MCP-compatible AI applications) to HTTP (Next.js MCP server).
 
+**New:** The Faxify MCP server now supports OAuth authentication! ChatGPT Web and Desktop apps in developer mode can connect directly by specifying the MCP URL and following an OAuth sequence (Google/Apple SSO or Email/OTP) to use the Faxify connector right from these tools.
+
 ## Resources
 
 - **Website**: [https://www.faxify.com](https://www.faxify.com)
@@ -63,42 +65,42 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` (Mac) or 
 }
 ```
 
-### For ChatGPT Desktop
+### For ChatGPT Desktop (Developer Mode)
 
-Edit `~/Library/Application Support/OpenAI/ChatGPT/chatgpt_desktop_config.json` (Mac) or `%APPDATA%/OpenAI/ChatGPT/chatgpt_desktop_config.json` (Windows):
+ChatGPT Desktop in developer mode supports direct MCP server connections with OAuth authentication:
 
-```json
-{
-  "mcpServers": {
-    "Faxify": {
-      "command": "npx",
-      "args": ["-y", "@faxify/mcp-client"],
-      "env": {
-        "FAXIFY_MCP_URL": "https://mcp.faxify.com/api/v1/mcp",
-        "FAXIFY_JWT_TOKEN": "YOUR_JWT_TOKEN_HERE"
-      }
-    }
-  }
-}
-```
-
-**Note:** After updating the configuration file, restart ChatGPT Desktop for the changes to take effect.
-
-### For ChatGPT Web App
-
-ChatGPT Web App supports MCP through custom integrations. Configure it in your ChatGPT account settings:
-
-1. Go to [ChatGPT Settings](https://chat.openai.com/settings)
-2. Navigate to **Integrations** or **Model Context Protocol** section
+1. Enable **Developer Mode** in ChatGPT Desktop settings
+2. Go to MCP settings/configuration
 3. Add a new MCP server with:
-   - **Name**: `Faxify`
-   - **Command**: `npx`
-   - **Args**: `-y @faxify/mcp-client`
-   - **Environment Variables**:
-     - `FAXIFY_MCP_URL`: `https://mcp.faxify.com/api/v1/mcp`
-     - `FAXIFY_JWT_TOKEN`: `YOUR_JWT_TOKEN_HERE`
+   - **MCP URL**: `https://mcp.faxify.com/api/v1/mcp`
+4. Follow the OAuth authentication flow:
+   - Click connect/authorize
+   - Choose your preferred login method:
+     - **Google SSO**: Sign in with your Google account
+     - **Apple SSO**: Sign in with your Apple ID
+     - **Email/OTP**: Enter your email and verify with the one-time password
+5. Once authenticated, the Faxify connector (MCP server) will be available directly in ChatGPT Desktop
 
-**Note:** MCP support for ChatGPT Web App may vary. Check OpenAI's documentation for the latest integration methods.
+**Note:** After completing the OAuth flow, restart ChatGPT Desktop for the changes to take effect.
+
+### For ChatGPT Web App (Developer Mode)
+
+ChatGPT Web App in developer mode supports direct MCP server connections with OAuth authentication:
+
+1. Enable **Developer Mode** in your ChatGPT account settings
+2. Go to [ChatGPT Settings](https://chat.openai.com/settings)
+3. Navigate to **Integrations** or **Model Context Protocol** section
+4. Add a new MCP server with:
+   - **MCP URL**: `https://mcp.faxify.com/api/v1/mcp`
+5. Follow the OAuth authentication flow:
+   - Click connect/authorize
+   - Choose your preferred login method:
+     - **Google SSO**: Sign in with your Google account
+     - **Apple SSO**: Sign in with your Apple ID
+     - **Email/OTP**: Enter your email and verify with the one-time password
+6. Once authenticated, the Faxify connector (MCP server) will be available directly in the ChatGPT Web App
+
+**Note:** OAuth authentication provides a seamless connection experience without requiring manual JWT token management.
 
 ### For Other MCP-Compatible Applications
 
@@ -153,7 +155,20 @@ Most MCP clients use a JSON configuration file with the following structure:
     - **iOS**: Download from [App Store](https://apps.apple.com/us/app/faxify-send-fax-from-iphone/id6444380905)
     - **Android**: Download from [Play Store](https://play.google.com/store/apps/details?id=com.constagility.faxify)
 
-**Then get your JWT token:**
+### Authentication Methods
+
+**For ChatGPT Web & Desktop (Developer Mode):**
+
+The Faxify MCP server now supports OAuth authentication, providing a seamless connection experience:
+
+1. Simply specify the MCP URL: `https://mcp.faxify.com/api/v1/mcp` in your ChatGPT settings
+2. Follow the OAuth authentication flow:
+   - Sign in with **Google SSO**, **Apple SSO**, or **Email/OTP**
+3. Once authenticated, start using the Faxify connector directly from ChatGPT
+
+**For Cursor, Claude Desktop, and other MCP clients:**
+
+These clients still require JWT token authentication:
 
 1. Log in to [Faxify MCP](https://mcp.faxify.com)
 2. Go to [Settings → MCP Configuration](https://mcp.faxify.com/en/settings)

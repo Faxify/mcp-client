@@ -1,6 +1,6 @@
 {
   "name": "@faxify/mcp-client",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "MCP client wrapper for Faxify MCP server - bridges stdio (Cursor) to HTTP (Next.js)",
   "type": "module",
   "main": "index.mjs",

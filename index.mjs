@@ -55,7 +55,9 @@ rl.on("line", async (line) => {
     if (DEBUG && request.method === "tools/call") {
       const toolName = request.params?.name;
       const toolArgs = request.params?.arguments || {};
-      // Log to stderr (not stdout) so it doesn't interfere with JSON-RPC responses
+      // Log to stderr (not stdout) so it doesn't interfere with JSON-RPC responses.
+
+      // available to a stdio MCP client; stdout is reserved for the protocol.
       console.error(
         `[MCP Client Debug] Tool call: ${toolName}\nArguments: ${JSON.stringify(toolArgs, null, 2)}`,
       );

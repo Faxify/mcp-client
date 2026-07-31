@@ -13,6 +13,11 @@
  *   Set environment variables:
  *   - FAXIFY_MCP_URL: HTTP endpoint URL (default: https://mcp.faxify.com/api/v1/mcp)
  *   - FAXIFY_JWT_TOKEN: Optional JWT token for authentication (get from browser)
+ *   - FAXIFY_MCP_DEBUG: Set to "true" to enable debug logging (logs to stderr)
+ *
+ * Note: This client is a transparent proxy - it forwards JSON-RPC requests
+ * from Cursor to the MCP server without modification. The MCP server handles
+ * both nested and flattened parameter structures for compatibility.
  */
 
 import http from "http";
@@ -23,6 +28,7 @@ import readline from "readline";
 const MCP_URL =
   process.env.FAXIFY_MCP_URL || "https://mcp.faxify.com/api/v1/mcp";
 const JWT_TOKEN = process.env.FAXIFY_JWT_TOKEN || "";
+const DEBUG = process.env.FAXIFY_MCP_DEBUG === "true";
 
 // Set up readline interface for line-by-line reading
 // MCP uses line-delimited JSON (NDJSON) over stdio
@@ -44,6 +50,16 @@ rl.on("line", async (line) => {
   try {
     // Parse JSON-RPC request
     const request = JSON.parse(line);
+
+    // Optional debug logging (set FAXIFY_MCP_DEBUG=true to enable)
+    if (DEBUG && request.method === "tools/call") {
+      const toolName = request.params?.name;
+      const toolArgs = request.params?.arguments || {};
+      // Log to stderr (not stdout) so it doesn't interfere with JSON-RPC responses
+      console.error(
+        `[MCP Client Debug] Tool call: ${toolName}\nArguments: ${JSON.stringify(toolArgs, null, 2)}`,
+      );
+    }
 
     // Parse URL to determine protocol
     const url = new URL(MCP_URL);

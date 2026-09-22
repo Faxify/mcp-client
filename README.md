@@ -190,4 +190,4 @@ The wrapper:
 
 ## License
 
-UNLICENSED - Constagility/Faxify
+[MIT](LICENSE) © 2025 Const Agility, LLC

@@ -1,7 +1,7 @@
 {
   "name": "@faxify/mcp-client",
   "version": "0.2.1",
-  "description": "MCP client wrapper for Faxify MCP server - bridges stdio (Cursor) to HTTP (Next.js)",
+  "description": "stdio bridge that connects Cursor, Claude Desktop and other stdio MCP clients to the hosted Faxify MCP server",
   "type": "module",
   "main": "index.mjs",
   "bin": {
@@ -21,9 +21,11 @@
     "model-context-protocol",
     "faxify",
     "cursor",
-    "cli"
+    "cli",
+    "fax",
+    "mcp-client"
   ],
-  "author": "Constagility/Faxify",
+  "author": "Const Agility, LLC (https://www.faxify.com)",
   "license": "MIT",
   "repository": {
     "type": "git",

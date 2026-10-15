@@ -26,6 +26,7 @@
     "mcp-client"
   ],
   "author": "Const Agility, LLC (https://www.faxify.com)",
+  "homepage": "https://www.faxify.com/en/mcp",
   "license": "MIT",
   "repository": {
     "type": "git",

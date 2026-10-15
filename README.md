@@ -6,7 +6,12 @@ Clients that connect to remote MCP servers over OAuth don't need this package: i
 
 ## Resources
 
-- **Website**: [https://www.faxify.com](https://www.faxify.com)
+- **Website**: [https://www.faxify.com/en](https://www.faxify.com/en)
+- **Faxify MCP overview**: [https://www.faxify.com/en/mcp](https://www.faxify.com/en/mcp)
+- **Guides**:
+  - [AI-Powered Faxing: The Complete Guide to Faxify MCP](https://www.faxify.com/en/blogs/faxify-mcp-ai-integration) (setup in each client)
+  - [Hosted Fax MCP Servers: Faxify vs Fax.Plus](https://www.faxify.com/en/blogs/fax-mcp-server-comparison)
+  - [Six Months of Faxify MCP: What Shipping AI Fax Taught Us](https://www.faxify.com/en/blogs/six-months-faxify-mcp)
 - **Web App**: [https://app.faxify.com](https://app.faxify.com)
 - **MCP Portal**: [https://mcp.faxify.com](https://mcp.faxify.com)
 - **API**: https://api.faxify.com (API documentation coming soon)
